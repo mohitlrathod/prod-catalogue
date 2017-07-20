@@ -2,18 +2,12 @@ package com.sapient.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.sapient.exception.EmptyResultDataAccessException;
 import com.sapient.persistence.IProductRepository;
-import com.sapient.persistence.ProductRepository;
 import com.sapient.pojo.Product;
 
 @Service
-@Transactional
-
 public class ProductCatalogueService implements IProductCatalogueService {
-
 	
 	@Autowired
 	 private IProductRepository productRepository;

@@ -1,75 +1,85 @@
 package com.sapient.pojo;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity
-public class Product extends AuditEntity{
+public class Product extends AuditEntity {
 
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long productID;
 	private String productName;
-	private String productDescription; 
+	private String productDescription;
 	private String brand;
 	private String os;
 	private String ram;
 	private String storage;
 	private String screensize;
-	
-	
+
 	public long getProductID() {
 		return productID;
 	}
+
 	public void setProductID(long productID) {
 		this.productID = productID;
 	}
+
 	public String getProductName() {
 		return productName;
 	}
+
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+
 	public String getProductDescription() {
 		return productDescription;
 	}
+
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
+
 	public String getBrand() {
 		return brand;
 	}
+
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
+
 	public String getOs() {
 		return os;
 	}
+
 	public void setOs(String os) {
 		this.os = os;
 	}
+
 	public String getRam() {
 		return ram;
 	}
+
 	public void setRam(String ram) {
 		this.ram = ram;
 	}
+
 	public String getStorage() {
 		return storage;
 	}
+
 	public void setStorage(String storage) {
 		this.storage = storage;
 	}
+
 	public String getScreensize() {
 		return screensize;
 	}
+
 	public void setScreensize(String screensize) {
 		this.screensize = screensize;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -84,6 +94,7 @@ public class Product extends AuditEntity{
 		result = prime * result + ((storage == null) ? 0 : storage.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -132,14 +143,12 @@ public class Product extends AuditEntity{
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Product [productID=" + productID + ", productName=" + productName + ", productDescription="
 				+ productDescription + ", brand=" + brand + ", os=" + os + ", ram=" + ram + ", storage=" + storage
 				+ ", screensize=" + screensize + "]";
 	}
-	
-	
-	
-	
+
 }

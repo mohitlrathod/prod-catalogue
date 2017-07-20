@@ -8,34 +8,25 @@ import com.sapient.pojo.Product;
 
 @Service
 public class ProductCatalogueService implements IProductCatalogueService {
-	
+
 	@Autowired
-	 private IProductRepository productRepository;
+	private IProductRepository productRepository;
 
 	@Override
 	public Product createProduct(Product product) {
-		productRepository.save(product);
-		return product;
+		return productRepository.save(product);
 	}
 
 	@Override
 	public Product searchProduct(Long id) {
-		Product product =	productRepository.getOne(id);
-		return product;
+		return productRepository.getOne(id);
 	}
 
 	@Override
 	public void deleteProduct(Long id) throws Exception {
-		//Product product= productRepository.getOne(id);
-		boolean test = productRepository.exists(id);
-		if(!test){
-			String message = id+" is not present in DB"; // this has to override
-			
-			throw new Exception(message);
+		if (!productRepository.exists(id)) {
+			throw new Exception(id + " is not present in DB");
 		}
 		productRepository.delete(id);
 	}
-
-	
-	
 }

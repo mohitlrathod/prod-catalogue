@@ -25,39 +25,28 @@ public class ProductCatalogueController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ProductCatalogueController.class);
 
-	
-	
 	@Autowired
 	private IProductCatalogueService iProductCatalogueService;
-	
+
 	@PostMapping
 	public ResponseEntity<String> createNewProduct(@RequestBody Product product) {
-		
-		logger.debug("Create Porduct called with paramter "+ product);
-		
+		logger.debug("Create Porduct called with paramter: {} ", product);
 		iProductCatalogueService.createProduct(product);
-		
 		return new ResponseEntity<>(product.getProductName() + " Client has been created successfully.",
 				HttpStatus.CREATED);
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<String> getProduct(@PathVariable String id){
-		
-		logger.debug("Get Porduct called to search with ID "+ id);
+	public ResponseEntity<String> getProduct(@PathVariable String id) {
+		logger.debug("Get Porduct called to search with ID: {} ", id);
 		Product product = iProductCatalogueService.searchProduct(Long.parseLong(id));
 		return new ResponseEntity<>(product.getProductName(), HttpStatus.OK);
 	}
-	
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteProduct(@PathVariable String id) throws Exception{
-		
+	public ResponseEntity<String> deleteProduct(@PathVariable String id) throws Exception {
 		logger.debug("Delete Porduct called  ID:{} ", id);
 		iProductCatalogueService.deleteProduct(Long.parseLong(id));
-		return new ResponseEntity<>("Product with ID "+id +"is deleted successfully", HttpStatus.OK);
+		return new ResponseEntity<>("Product with ID " + id + "is deleted successfully", HttpStatus.OK);
 	}
-	
-	
-	
 }
